@@ -17,5 +17,33 @@ namespace DiscountLocator19
         {
             InitializeComponent();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            listViewStores.ItemsSource = await App.Database.GetStores();
+            listViewDiscounts.ItemsSource = await App.Database.GetDiscounts();
+        }
+
+        async void OnButtonClicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(nameStoreEntry.Text) && !string.IsNullOrWhiteSpace(descriptionStoreEntry.Text) && !string.IsNullOrWhiteSpace(nameDiscountEntry.Text) && !string.IsNullOrWhiteSpace(valueDiscountEntry.Text))
+            {
+                await App.Database.InsertStores(new database.Entities.Store
+                {
+                    Name = nameStoreEntry.Text,
+                    Description = descriptionStoreEntry.Text
+                });
+                await App.Database.InsertDiscounts(new database.Entities.Discount
+                {
+                    DiscountName = nameDiscountEntry.Text,
+                    discountValue = int.Parse(valueDiscountEntry.Text)
+
+                });
+                nameStoreEntry.Text = descriptionStoreEntry.Text = nameDiscountEntry.Text = valueDiscountEntry.Text = string.Empty;
+                listViewDiscounts.ItemsSource = await App.Database.GetDiscounts();
+                listViewStores.ItemsSource = await App.Database.GetStores();
+
+            }
+        }
     }
 }

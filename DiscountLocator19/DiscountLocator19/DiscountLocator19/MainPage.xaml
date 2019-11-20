@@ -7,10 +7,40 @@
              x:Class="DiscountLocator19.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Hello World" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="nameStoreEntry"
+               Placeholder="Enter store name" />
+        <Entry x:Name="descriptionStoreEntry"
+               Placeholder="Enter store description" />
+        <Entry x:Name="nameDiscountEntry"
+               Placeholder="Enter discount name" />
+        <Entry x:Name="valueDiscountEntry"
+               Placeholder="Enter discount value" />
+        <Button Text="Add to Database"
+                Clicked="OnButtonClicked" />
+        <ListView x:Name="listViewStores">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                            <Label Grid.Column="1" Text="{Binding Description}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="listViewDiscounts">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Label Text="{Binding DiscountName}" FontAttributes="Bold"/>
+                            <Label Grid.Column="1" Text="{Binding discountValue}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>

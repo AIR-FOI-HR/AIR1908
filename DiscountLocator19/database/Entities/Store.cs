@@ -7,6 +7,8 @@ namespace database.Entities
 {
     public class Store
     {
+        readonly SQLiteAsyncConnection _database;
+
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string Name { get; set; }

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using database.Entities;
+using Newtonsoft.Json;
+using Refit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using webservice;
 using Xamarin.Forms;
 
 namespace DiscountLocator19
@@ -22,6 +26,18 @@ namespace DiscountLocator19
             base.OnAppearing();
             listViewStores.ItemsSource = await App.Database.GetStores();
             listViewDiscounts.ItemsSource = await App.Database.GetDiscounts();
+
+            await CallApi();
+        }
+
+        async Task CallApi()
+        {
+            var postParameter = new Dictionary<String, String>();
+            postParameter.Add("method", "getAll");
+
+            var response = RestService.For<AirWebService>("http://cortex.foi.hr/mtl/courses/air/");
+            var storesFromWebService = await response.getStores(postParameter);
+            var discountsFromWebService = await response.getDiscounts(postParameter);
         }
 
         async void OnButtonClicked(object sender, EventArgs e)

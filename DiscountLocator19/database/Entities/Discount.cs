@@ -18,5 +18,6 @@ namespace database.Entities
         public int discountValue { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
+
     }
 }

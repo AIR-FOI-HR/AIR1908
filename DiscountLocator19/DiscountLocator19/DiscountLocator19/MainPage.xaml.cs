@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Refit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using webservice;
 using Xamarin.Forms;
 
 namespace DiscountLocator19
@@ -16,12 +18,25 @@ namespace DiscountLocator19
         public MainPage()
         {
             InitializeComponent();
-        }
+    }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             listViewStores.ItemsSource = await App.Database.GetStores();
             listViewDiscounts.ItemsSource = await App.Database.GetDiscounts();
+            await CallApi();
+        }
+
+        async Task CallApi()
+        {
+            var request =
+            new Dictionary<String, String>();
+            request.Add("method", "getAll");
+
+            MyWebServiceCaller myWebServiceCaller = new MyWebServiceCaller();
+            myWebServiceCaller.getAll(request, "store");
+            myWebServiceCaller.getAll(request, "discount");
+
         }
 
         async void OnButtonClicked(object sender, EventArgs e)

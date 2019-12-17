@@ -14,5 +14,11 @@ namespace database.Entities
         public string ImgUrl { get; set; }
         public long Longitude { get; set; }
         public long Latitude { get; set; }
+
+        //public static List<Store> getAll()
+        //{ 
+              
+        //}
+
     }
 }

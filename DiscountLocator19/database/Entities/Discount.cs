@@ -8,6 +8,8 @@ namespace database.Entities
 {
     public class Discount
     {
+        public static MyDatabase database;
+
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         [ForeignKey(typeof(Store))]
@@ -18,6 +20,12 @@ namespace database.Entities
         public int discountValue { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
+
+        public static List<Discount> getAll()
+        {
+            return database.GetDiscounts();
+        }
+
 
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using webservice;
 using Xamarin.Forms;
+using database.Entities;
 
 namespace DiscountLocator19
 {
@@ -15,6 +16,7 @@ namespace DiscountLocator19
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        MyWebServiceCaller myWebServiceCaller = new MyWebServiceCaller();
         public MainPage()
         {
             InitializeComponent();
@@ -22,8 +24,8 @@ namespace DiscountLocator19
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listViewStores.ItemsSource = await App.Database.GetStores();
-            listViewDiscounts.ItemsSource = await App.Database.GetDiscounts();
+            listViewDiscounts.ItemsSource = await database.Database.DatabasePath.GetDiscounts();
+            listViewStores.ItemsSource = await database.Database.DatabasePath.GetStores();
             await CallApi();
         }
 
@@ -32,33 +34,25 @@ namespace DiscountLocator19
             var request =
             new Dictionary<String, String>();
             request.Add("method", "getAll");
-
-            MyWebServiceCaller myWebServiceCaller = new MyWebServiceCaller();
+           
             myWebServiceCaller.getAll(request, "store");
             myWebServiceCaller.getAll(request, "discount");
 
         }
-
+        
         async void OnButtonClicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(nameStoreEntry.Text) && !string.IsNullOrWhiteSpace(descriptionStoreEntry.Text) && !string.IsNullOrWhiteSpace(nameDiscountEntry.Text) && !string.IsNullOrWhiteSpace(valueDiscountEntry.Text))
+            Store[] storesItems = myWebServiceCaller.SendStoreItems();
+            foreach (Store item in storesItems)
             {
-                await App.Database.InsertStores(new database.Entities.Store
+                await database.Database.DatabasePath.InsertStores(new Store
                 {
-                    Name = nameStoreEntry.Text,
-                    Description = descriptionStoreEntry.Text
+                    Name = item.Name,
+                    Description = item.Description
                 });
-                await App.Database.InsertDiscounts(new database.Entities.Discount
-                {
-                    DiscountName = nameDiscountEntry.Text,
-                    discountValue = int.Parse(valueDiscountEntry.Text)
-
-                });
-                nameStoreEntry.Text = descriptionStoreEntry.Text = nameDiscountEntry.Text = valueDiscountEntry.Text = string.Empty;
-                listViewDiscounts.ItemsSource = await App.Database.GetDiscounts();
-                listViewStores.ItemsSource = await App.Database.GetStores();
-
             }
+                listViewDiscounts.ItemsSource = await database.Database.DatabasePath.GetDiscounts();
+                listViewStores.ItemsSource = await database.Database.DatabasePath.GetStores();            
         }
     }
 }

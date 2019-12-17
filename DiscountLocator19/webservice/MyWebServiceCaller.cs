@@ -11,7 +11,7 @@ namespace webservice
     public class MyWebServiceCaller
     {
         MyWebServiceHandler mMyWebServiceHandler;
-
+        public Store[] _storeItems;
         private static MyWebService _api;
 
         private const String baseUrl = "http://cortex.foi.hr/mtl/courses/air";
@@ -50,10 +50,13 @@ namespace webservice
             Store[] storeItems = JsonConvert.DeserializeObject<Store[]>(responseStores.items);
             if (mMyWebServiceHandler != null)
             {
-                mMyWebServiceHandler.onDataArrived(new List<Store>(storeItems), true, responseStores.timeStamp); 
-
+                mMyWebServiceHandler.onDataArrived(new List<Store>(storeItems), true, responseStores.timeStamp);
+                _storeItems = storeItems;
             }
             
+        }
+        public Store[] SendStoreItems() {
+            return _storeItems;
         }
 
         private void handleDiscounts(MyWebServiceResponse responseDiscounts)

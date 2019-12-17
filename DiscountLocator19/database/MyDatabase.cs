@@ -20,7 +20,6 @@ namespace database
         {
             return _database.Table<Store>().ToListAsync();
         }
-
         public Task<int> InsertStores(Store store)
         {
             return _database.InsertAsync(store);

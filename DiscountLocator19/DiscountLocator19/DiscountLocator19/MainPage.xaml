@@ -3,44 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local1="clr-namespace:DiscountLocator19"
              mc:Ignorable="d"
              x:Class="DiscountLocator19.MainPage">
 
     <StackLayout>
-        <Entry x:Name="nameStoreEntry"
-               Placeholder="Enter store name" />
-        <Entry x:Name="descriptionStoreEntry"
-               Placeholder="Enter store description" />
-        <Entry x:Name="nameDiscountEntry"
-               Placeholder="Enter discount name" />
-        <Entry x:Name="valueDiscountEntry"
-               Placeholder="Enter discount value" />
-        <Button Text="Add to Database"
-                Clicked="OnButtonClicked" />
-        <ListView x:Name="listViewStores">
+        <ListView x:Name="Storeslist" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
-                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
-                            <Label Grid.Column="1" Text="{Binding Description}"/>
-                        </Grid>
+                        <local1:store_list_item/>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="listViewDiscounts">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Label Text="{Binding DiscountName}" FontAttributes="Bold"/>
-                            <Label Grid.Column="1" Text="{Binding discountValue}"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            
     </StackLayout>
 
 </ContentPage>

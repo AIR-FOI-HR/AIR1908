@@ -11,7 +11,7 @@ namespace DiscountLocator19
         public App()
         {
             InitializeComponent();
-
+            
             MainPage = new MainPage();
         }
 

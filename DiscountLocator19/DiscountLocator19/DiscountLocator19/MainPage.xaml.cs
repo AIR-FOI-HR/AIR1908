@@ -22,6 +22,7 @@ namespace DiscountLocator19
         public MainPage()
         {
             InitializeComponent();
+            FillList();
     }
         protected override async void OnAppearing()
         {
@@ -40,18 +41,14 @@ namespace DiscountLocator19
             myWebServiceCaller.getAll(request, "discount");
 
         }
-        
-        async void OnButtonClicked(object sender, EventArgs e)
+
+        async void FillList()
         {
-            await database.Database.DatabasePath.InsertStores(new Store
-            {
-                Name = nameStoreEntry.Text,
-                Description = descriptionStoreEntry.Text
-            });
             stores = database.Database.DatabasePath.GetStores().Result;
-            discounts = database.Database.DatabasePath.GetDiscounts().Result;
-            listViewDiscounts.ItemsSource = discounts;
-            listViewStores.ItemsSource = stores;
+            Storeslist.ItemsSource = stores;
+            
         }
+
+        
     }
 }

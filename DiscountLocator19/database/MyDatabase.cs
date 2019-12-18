@@ -23,7 +23,7 @@ namespace database
         public Task<int> InsertStores(Store store)
         {
             return _database.InsertAsync(store);
-        }
+        }      
         public Task<int> InsertDiscounts(Discount discount)
         {
             return _database.InsertAsync(discount);

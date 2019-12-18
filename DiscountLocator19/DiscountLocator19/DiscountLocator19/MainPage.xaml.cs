@@ -17,6 +17,8 @@ namespace DiscountLocator19
     public partial class MainPage : ContentPage
     {
         MyWebServiceCaller myWebServiceCaller = new MyWebServiceCaller();
+        List<Store> stores;
+        List<Discount> discounts;
         public MainPage()
         {
             InitializeComponent();
@@ -24,8 +26,7 @@ namespace DiscountLocator19
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listViewDiscounts.ItemsSource = await database.Database.DatabasePath.GetDiscounts();
-            listViewStores.ItemsSource = await database.Database.DatabasePath.GetStores();
+            
             await CallApi();
         }
 
@@ -42,17 +43,15 @@ namespace DiscountLocator19
         
         async void OnButtonClicked(object sender, EventArgs e)
         {
-            Store[] storesItems = myWebServiceCaller.SendStoreItems();
-            foreach (Store item in storesItems)
+            await database.Database.DatabasePath.InsertStores(new Store
             {
-                await database.Database.DatabasePath.InsertStores(new Store
-                {
-                    Name = item.Name,
-                    Description = item.Description
-                });
-            }
-                listViewDiscounts.ItemsSource = await database.Database.DatabasePath.GetDiscounts();
-                listViewStores.ItemsSource = await database.Database.DatabasePath.GetStores();            
+                Name = nameStoreEntry.Text,
+                Description = descriptionStoreEntry.Text
+            });
+            stores = database.Database.DatabasePath.GetStores().Result;
+            discounts = database.Database.DatabasePath.GetDiscounts().Result;
+            listViewDiscounts.ItemsSource = discounts;
+            listViewStores.ItemsSource = stores;
         }
     }
 }

@@ -14,7 +14,10 @@ namespace DiscountLocator19.loaders
             base.loadData(dataLoadedListener);
             try
             {
-                
+                stores = Database.DatabasePath.GetStores().Result;
+                discounts = Database.DatabasePath.GetDiscounts().Result;
+
+                mdataLoadedListener.onDataLoaded(stores, discounts);
             }
             catch (Exception)
             {

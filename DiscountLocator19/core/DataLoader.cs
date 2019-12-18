@@ -15,6 +15,7 @@ namespace core
         public virtual void loadData(DataLoadedListener dataLoadedListener)
         {
             this.mdataLoadedListener = dataLoadedListener;
+
         }
 
         public bool dataLoaded()

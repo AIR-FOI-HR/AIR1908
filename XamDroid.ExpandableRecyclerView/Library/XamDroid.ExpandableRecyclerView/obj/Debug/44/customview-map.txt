@@ -1,0 +1,7 @@
+attr;C:\Users\viz\Desktop\AIR1908-Xamarin-test\XamDroid.ExpandableRecyclerView\Library\XamDroid.ExpandableRecyclerView\obj\Debug\44\resourcecache\1290FF0420E1544A60C730D597743258\res\values\values.xml
+declare-styleable;C:\Users\viz\Desktop\AIR1908-Xamarin-test\XamDroid.ExpandableRecyclerView\Library\XamDroid.ExpandableRecyclerView\obj\Debug\44\resourcecache\1290FF0420E1544A60C730D597743258\res\values\values.xml
+dimen;C:\Users\viz\Desktop\AIR1908-Xamarin-test\XamDroid.ExpandableRecyclerView\Library\XamDroid.ExpandableRecyclerView\obj\Debug\44\resourcecache\1290FF0420E1544A60C730D597743258\res\values\values.xml
+item;C:\Users\viz\Desktop\AIR1908-Xamarin-test\XamDroid.ExpandableRecyclerView\Library\XamDroid.ExpandableRecyclerView\obj\Debug\44\resourcecache\1290FF0420E1544A60C730D597743258\res\values\values.xml
+resources;C:\Users\viz\Desktop\AIR1908-Xamarin-test\XamDroid.ExpandableRecyclerView\Library\XamDroid.ExpandableRecyclerView\obj\Debug\44\resourcecache\1290FF0420E1544A60C730D597743258\res\values\values.xml
+resources;obj\Debug\44\res\values\strings.xml
+string;obj\Debug\44\res\values\strings.xml

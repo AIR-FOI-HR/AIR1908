@@ -213,6 +213,8 @@ namespace DiscountLocator19
 			global::XamDroid.ExpandableRecyclerView.Resource.Attribute.spanCount = global::DiscountLocator19.Resource.Attribute.spanCount;
 			global::XamDroid.ExpandableRecyclerView.Resource.Attribute.stackFromEnd = global::DiscountLocator19.Resource.Attribute.stackFromEnd;
 			global::XamDroid.ExpandableRecyclerView.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::DiscountLocator19.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::XamDroid.ExpandableRecyclerView.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::DiscountLocator19.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::XamDroid.ExpandableRecyclerView.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::DiscountLocator19.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
 			global::XamDroid.ExpandableRecyclerView.Resource.Id.item_touch_helper_previous_elevation = global::DiscountLocator19.Resource.Id.item_touch_helper_previous_elevation;
 			global::XamDroid.ExpandableRecyclerView.Resource.String.library_name = global::DiscountLocator19.Resource.String.library_name;
 			global::XamDroid.ExpandableRecyclerView.Resource.Styleable.RecyclerView = global::DiscountLocator19.Resource.Styleable.RecyclerView;

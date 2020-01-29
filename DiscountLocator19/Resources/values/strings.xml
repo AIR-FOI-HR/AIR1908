@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DiscountLocator19</string>
+  <string name="app_name">DiscountLocator19</string>
     <string name="action_settings">Settings</string>
 
     <string name="store_image">Store image</string>
@@ -37,5 +37,8 @@
     <string name="menu_map">Map view</string>
     <string name="menu_about">About App</string>
     <string name="additional">Additional</string>
-  
+
+  <string name="ad_mob_id">ca-app-pub-3940256099942544/6300978111</string>
+
+
 </resources>
